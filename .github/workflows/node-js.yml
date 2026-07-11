@@ -1,0 +1,20 @@
+name: node build pipeline
+on:
+ push:
+   branches:
+     - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: setup node js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: install dependency
+        run: npm install
+      - name: build application
+        run: npm run build
+      
